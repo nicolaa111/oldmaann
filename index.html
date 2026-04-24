@@ -111,7 +111,7 @@ button {
 
     <div id="choiceBtns" class="hidden">
         <button id="yesBtn" onmouseover="moveYes()">Yes</button>
-        <button onclick="noChoice()">Of course not</button>
+        <button onclick="noChoice(); speakLine()">noo i donnttt</button>
     </div>
 </div>
 
@@ -121,7 +121,7 @@ function checkPassword() {
         login.classList.add("hidden");
         menu.classList.remove("hidden");
 
-        explodeHearts(); // 💗 after login
+        explodeHearts();
     } else {
         alert("Wrong password bijj😠");
     }
@@ -176,7 +176,7 @@ function tryExit() {
         exitText.innerText = "oh? you’re leaving?";
         
         setTimeout(() => {
-            exitText.innerText = "so… you got another girl? ";
+            exitText.innerText = "so… you got another girl?";
             document.getElementById("choiceBtns").classList.remove("hidden");
         }, 2000);
 
@@ -195,12 +195,18 @@ function moveYes() {
 
 // NO BUTTON
 function noChoice() {
-    exitText.innerText = "YEAH WHATEVER ";
+    exitText.innerText = "hmm okay… you better not 😒";
 }
 
-// VOICE LINE
+// VOICE LINE (FIXED)
 function speakLine() {
-    let msg = new SpeechSynthesisUtterance("I’m cute, you’re just aging.");
+    const msg = new SpeechSynthesisUtterance("I’m cute, you’re just aging.");
+
+    msg.volume = 1;
+    msg.rate = 1;
+    msg.pitch = 1.2;
+
+    speechSynthesis.cancel();
     speechSynthesis.speak(msg);
 }
 </script>
